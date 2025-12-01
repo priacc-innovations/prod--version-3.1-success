@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: employee-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employee_db
+    username: postgres
+    password: Venkatsagar@26
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_schema: public
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: employee_group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+websocket:
+  endpoint: /ws
+  allowed-origins: "*"
+
+app:
+  kafka:
+    topics:
+      - employee_service.public.announcement
+      - employee_service.public.holiday
+      - employee_service.public.leave_request
+      - employee_service.public.performance_review
+      - employee_service.public.users
+      - employee_service.public.salary
+      - employee_service.public.attendance
+
+# -------------------------
+# AWS S3 CONFIG  (Correct)
+# -------------------------
+aws:
+  access_key: AKIAXAUECRUMHH5CVJFC
+  secret_key: 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
+  region: us-east-1
+  bucket: teamhub-storage  # ✔ Correct spelling
+
+logging:
+  level:
+    org.springframework.kafka: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

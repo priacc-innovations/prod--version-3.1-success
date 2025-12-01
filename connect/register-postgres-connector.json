@@ -1,0 +1,20 @@
+{
+  "name": "inventory-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "employee-db.cq1wkg2m82y4.us-east-1.rds.amazonaws.com",
+    "database.port": "5432",
+    "database.user": "priaccinnovation",
+    "database.password": "priaccinnovation",
+    "database.dbname": "employee_db",
+    "plugin.name": "pgoutput",
+    "database.server.id": "184054",
+    "topic.prefix": "employee_service",
+    "publication.autocreate.mode": "all_tables",
+    "snapshot.mode": "initial",
+    "table.include.list": "public.*",
+    "database.history.kafka.bootstrap.servers": "kafka:9092",
+    "database.history.kafka.topic": "schema-changes.demo"
+  }
+}
+
