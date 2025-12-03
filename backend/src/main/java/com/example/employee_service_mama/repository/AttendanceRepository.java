@@ -91,5 +91,7 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Integer>
 
     @Query("SELECT COUNT(a) FROM Attendance a WHERE a.date = :today AND a.status = 'PRESENT'")
     long countPresentToday(@Param("today") LocalDate today);
+    boolean existsByUserIdAndDate(Integer userId, LocalDate date);
 
 }
+
