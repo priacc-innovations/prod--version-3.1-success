@@ -13,7 +13,7 @@ export default function ClockInOut() {
   const [todayAttendance, setTodayAttendance] = useState<any | null>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isClockedIn, setIsClockedIn] = useState(false);
-
+ 
   // Fetch today's attendance
   const fetchTodayAttendance = async () => {
     if (!user?.id) return;
